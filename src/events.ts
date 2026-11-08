@@ -55,7 +55,7 @@ export const EVENTS: Record<EventType, EventConfig> = {
     messageDate: "January 16, 2027 (Saturday)",
     messageTime: "Poruwa Ceremony 10:46 AM · Wedding Ceremony 11:45 AM Onwards",
     venueName: "Ahaspokuna Holiday Resort",
-    venueImage: "/Screenshot 2026-09-22 035106.png",
+    venueImage: "/ahaspokuna-holiday-resort.png",
     mapsUrl: "https://maps.app.goo.gl/enLFTefG8dknz4g16?g_st=iw",
     ceremony: { label: "Auspicious Ceremony", title: "PORUWA CEREMONY", time: "10:46 AM" },
     rsvpNote: "Kindly RSVP before January 5th.",
