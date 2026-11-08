@@ -8,30 +8,46 @@
   --font-montserrat: "Montserrat", sans-serif;
   --font-playball: "Playball", cursive;
 
-  --color-sage: #86efac;
+  --color-sage: #f9a8d4;
   --color-paper: #FFFFFF;
 
-  --color-theme-50: #f0fdf4;
-  --color-theme-100: #dcfce7;
-  --color-theme-200: #bbf7d0;
-  --color-theme-300: #86efac;
-  --color-theme-400: #4ade80;
-  --color-theme-500: #22c55e;
-  --color-theme-600: #16a34a;
-  --color-theme-700: #15803d;
-  --color-theme-800: #166534;
-  --color-theme-900: #14532d;
+  /* Wedding: white & pink (default) */
+  --color-theme-50: #fdf2f8;
+  --color-theme-100: #fce7f3;
+  --color-theme-200: #fbcfe8;
+  --color-theme-300: #f9a8d4;
+  --color-theme-400: #f472b6;
+  --color-theme-500: #ec4899;
+  --color-theme-600: #db2777;
+  --color-theme-700: #be185d;
+  --color-theme-800: #9d174d;
+  --color-theme-900: #831843;
+}
+
+/* Homecoming: red */
+[data-event="homecoming"] {
+  --color-sage: #fca5a5;
+  --color-theme-50: #fef2f2;
+  --color-theme-100: #fee2e2;
+  --color-theme-200: #fecaca;
+  --color-theme-300: #fca5a5;
+  --color-theme-400: #f87171;
+  --color-theme-500: #ef4444;
+  --color-theme-600: #dc2626;
+  --color-theme-700: #b91c1c;
+  --color-theme-800: #991b1b;
+  --color-theme-900: #7f1d1d;
 }
 
 .silver-border {
-  border: 2px solid #86efac;
-  box-shadow: 
+  border: 2px solid var(--color-theme-300);
+  box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.4),
-    inset 0 0 10px rgba(134, 239, 172, 0.3);
+    inset 0 0 10px color-mix(in srgb, var(--color-theme-300) 30%, transparent);
 }
 
 .silver-text {
-  background: linear-gradient(135deg, #4ade80 0%, #dcfce7 50%, #4ade80 100%);
+  background: linear-gradient(135deg, var(--color-theme-400) 0%, var(--color-theme-100) 50%, var(--color-theme-400) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -129,8 +145,8 @@ html, body {
 
 .website-shell {
   background:
-    radial-gradient(circle at 18% 14%, rgba(192, 192, 192, 0.19), transparent 38%),
-    radial-gradient(circle at 84% 72%, rgba(156, 163, 175, 0.16), transparent 42%),
+    radial-gradient(circle at 18% 14%, color-mix(in srgb, var(--color-theme-200) 30%, transparent), transparent 38%),
+    radial-gradient(circle at 84% 72%, color-mix(in srgb, var(--color-theme-200) 22%, transparent), transparent 42%),
     linear-gradient(180deg, #ffffff 0%, #f9fafb 42%, #ffffff 100%);
 }
 
@@ -143,8 +159,8 @@ html, body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 25%, rgba(192, 192, 192, 0.16), transparent 35%),
-    radial-gradient(circle at 78% 75%, rgba(156, 163, 175, 0.14), transparent 38%);
+    radial-gradient(circle at 20% 25%, color-mix(in srgb, var(--color-theme-200) 25%, transparent), transparent 35%),
+    radial-gradient(circle at 78% 75%, color-mix(in srgb, var(--color-theme-200) 20%, transparent), transparent 38%);
 }
 
 .paper-grain {
