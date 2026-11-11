@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, MapPin, Calendar, Clock } from "lucide-react";
-import { COUPLE, EVENTS, getEventType } from "./events";
+import { COUPLE, EVENTS, detectEventType } from "./events";
 import Gallery from "./Gallery";
 
-const eventType = getEventType(new URLSearchParams(window.location.search).get("t"));
+const eventType = detectEventType();
 const event = EVENTS[eventType];
 const compactIntroButton = eventType === "homecoming";
 
 /**
  * Premium Invitation
- * Names: Lakshani & Dinith
+ * Names: Lakshani & Akalanka
  * Wedding: white & pink theme  |  Homecoming: red theme  (selected via ?t=)
  */
 
@@ -193,7 +193,8 @@ function CountdownTimer() {
   );
 }
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuGTj0NvL9KnWdpCBx7rawtYHWRtHSwllWSYEONdnhaIPyTnFvJGOp2srwBrNpoant/exec";
+// Google Apps Script web-app URL (see apps-script/Code.gs). Paste your /exec URL here.
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynv7oqYcunddvwyxodRSNChS6ngq9BUuCm8i5KcoHZ89qTtsddELuk-D_bbCO1lWXU/exec";
 
 export default function WeddingInvitation() {
   const [isOpened, setIsOpened] = useState(false);
@@ -224,12 +225,16 @@ export default function WeddingInvitation() {
     try {
       const params = new URLSearchParams();
       params.append("formName", formName);
+      params.append("Event", eventType);
+      if (hasGuest) {
+        params.append("Invited As", guestPrefix!.toLowerCase() === "dear" ? guestName! : `${guestPrefix} ${guestName}`);
+      }
 
       // Explicit mapping of keys to Sheet Headers
       const fieldMapping: Record<string, string> = {
         name: "Name",
         guests: "Guests",
-        dietary: "Dietary Notes",
+        dietary: "Wish",
         message: "Message"
       };
 

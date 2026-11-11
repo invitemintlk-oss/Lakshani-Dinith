@@ -21,7 +21,8 @@ export default function Admin() {
       return;
     }
     const origin = window.location.origin;
-    const link = `${origin}/?t=${eventType}&p=${encodeURIComponent(prefix)}&n=${encodeURIComponent(guestName)}`;
+    const base = eventType === 'homecoming' ? `${origin}/homecoming` : `${origin}/`;
+    const link = `${base}?p=${encodeURIComponent(prefix)}&n=${encodeURIComponent(guestName)}`;
     setGeneratedLink(link);
   };
 

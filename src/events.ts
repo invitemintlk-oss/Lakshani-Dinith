@@ -1,7 +1,7 @@
 export const COUPLE = {
   bride: { first: "Lakshani", full: "H. M. Lakshani Rasangika Herath", parents: ["Mr. H. M. Upali Herath", "Mrs. H. M. Kumari Herath"] },
-  groom: { first: "Dinith", full: "H. A. Dinith Akalanka Hapuarachchi", parents: ["Mr. H. A. Dayananda Hapuarachchi", "Mrs. H. A. Nirmala Hettiarachchi"] },
-  monogram: "L & D",
+  groom: { first: "Akalanka", full: "H. A. Dinith Akalanka Hapuarachchi", parents: ["Mr. H. A. Dayananda Hapuarachchi", "Mrs. H. A. Nirmala Hettiarachchi"] },
+  monogram: "L & A",
 };
 
 export type EventType = "wedding" | "homecoming";
@@ -102,4 +102,10 @@ export const EVENTS: Record<EventType, EventConfig> = {
 
 export function getEventType(param: string | null): EventType {
   return param === "homecoming" || param === "h" ? "homecoming" : "wedding";
+}
+
+/** Homecoming lives at /homecoming (own link-preview image); ?t= is still honoured for older links. */
+export function detectEventType(): EventType {
+  if (window.location.pathname.replace(/\/+$/, "") === "/homecoming") return "homecoming";
+  return getEventType(new URLSearchParams(window.location.search).get("t"));
 }
